@@ -1,8 +1,8 @@
 package com.mercacortex.staticfragment.fragment;
 
-import android.content.Context;
+import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,14 +30,15 @@ public class FragmentA extends Fragment {
     // Required empty public constructor
     public FragmentA() { }
 
+    // API < 23 pide onAttach que se le pase Activity
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
         //Siempre un try con ClassCastException
         try {
-            mCallBack = (FragmentIterationListener) context;
+            mCallBack = (FragmentIterationListener) activity;
         } catch (ClassCastException ex) {
-            throw new ClassCastException(context.toString() + " FragmentIterationListener must be implemented");
+            throw new ClassCastException(activity.toString() + " FragmentIterationListener must be implemented");
         }
     }
     @Override
@@ -47,16 +48,20 @@ public class FragmentA extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_a, container, false);
 
         //Comprobación muy útil. La vista lo ha inflado ya y nos lo da.
-        if (rootView == null) {
+
+        if (rootView != null) {
             edtFragmentA = (EditText) rootView.findViewById(R.id.edtFrgAText);
+            skbFragmentA = (SeekBar) rootView.findViewById(R.id.skbFrgABar);
+
             btnFrgAChangeText = (Button) rootView.findViewById(R.id.btnFrgAOk);
+
             btnFrgAChangeText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mCallBack.onFragmentIterationListener(edtFragmentA.getText().toString(), skbFragmentA.getProgress());
                 }
             });
-            skbFragmentA = (SeekBar) rootView.findViewById(R.id.skbFrgABar);
+
         }
 
         return rootView;

@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     tools:context="com.mercacortex.staticfragment.fragment.FragmentA">
 
-    <!-- TODO: Update blank fragment layout -->
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,18 +19,13 @@
         />
 
     <SeekBar
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:progress="20"
         android:max="100"
         android:layout_below="@id/edtFrgAText"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/skbFrgABar"
-        />
+        android:id="@+id/skbFrgABar" />
 
     <Button
         android:layout_width="wrap_content"
