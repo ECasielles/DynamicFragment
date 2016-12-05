@@ -1,4 +1,4 @@
-package com.mercacortex.staticfragment;
+package com.mercacortex.dynamicfragment;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

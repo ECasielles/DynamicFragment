@@ -1,4 +1,4 @@
-package com.mercacortex.staticfragment.fragment;
+package com.mercacortex.dynamicfragment.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.mercacortex.staticfragment.R;
+import com.mercacortex.dynamicfragment.R;
 
 public class FragmentC extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.mercacortex.staticfragment;
+package com.mercacortex.dynamicfragment;
 
 import org.junit.Test;
 

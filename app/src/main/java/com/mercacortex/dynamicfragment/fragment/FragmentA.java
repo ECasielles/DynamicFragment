@@ -1,8 +1,10 @@
-package com.mercacortex.staticfragment.fragment;
+package com.mercacortex.dynamicfragment.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,31 +12,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
-import com.mercacortex.staticfragment.R;
-
+import com.mercacortex.dynamicfragment.R;
 
 public class FragmentA extends Fragment {
 
     private EditText edtFragmentA;
     private Button btnFrgAChangeText;
     private SeekBar skbFragmentA;
+    public static final String TAG_FRAGMENTA = "fragmentA";
 
-    //Interfaz para poder capturar la excepción
     private FragmentIterationListener mCallBack;
 
     public interface FragmentIterationListener {
-        //Modifica el texto y su tamaño
         void onFragmentIterationListener(String text, int size);
     }
 
-    // Required empty public constructor
     public FragmentA() { }
 
-    // API < 23 pide onAttach que se le pase Activity
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //Siempre un try con ClassCastException
         try {
             mCallBack = (FragmentIterationListener) activity;
         } catch (ClassCastException ex) {
@@ -43,11 +40,11 @@ public class FragmentA extends Fragment {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Siempre implementar el superconstructor aunque no lo ponga el AS (por correccion)
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_a, container, false);
 
-        //Comprobación muy útil. La vista lo ha inflado ya y nos lo da.
+        // Para que retenga los cambios y no se superponga
+        setRetainInstance(true);
 
         if (rootView != null) {
             edtFragmentA = (EditText) rootView.findViewById(R.id.edtFrgAText);
@@ -66,4 +63,5 @@ public class FragmentA extends Fragment {
 
         return rootView;
     }
+
 }

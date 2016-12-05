@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StaticFragment</string>
+    <string name="app_name">DynamicFragment</string>
     <string name="btnFrgAOk">Ok</string>
     <string name="txvFrgAText">Soy un Fragment</string>
     <string name="txvFrgBText">Hola Caracola</string>
